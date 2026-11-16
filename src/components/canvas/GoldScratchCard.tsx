@@ -7,7 +7,7 @@ import { soundController } from '@/lib/soundController';
 import { Sparkles, MapPin, Clock, PhoneCall } from 'lucide-react';
 
 /**
- * Interactive HTML5 Gold-Foil Scratch Card (Matches Reference Video 2 frames 19–21)
+ * Interactive HTML5 Gold-Foil Scratch Card (25 Nov 2001 -> 25 Nov 2026, 7:00 PM)
  */
 export default function GoldScratchCard() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -52,11 +52,11 @@ export default function GoldScratchCard() {
     ctx.font = 'bold 14px Georgia, serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('✦ SCRATCH TO REVEAL ✦', width / 2, height / 2 - 14);
+    ctx.fillText('✦ RUB GOLD FOIL TO REVEAL VENUE & TIME ✦', width / 2, height / 2 - 10);
 
     ctx.font = '600 11px Montserrat, sans-serif';
     ctx.fillStyle = '#5A0E1E';
-    ctx.fillText('CELEBRATION VENUE & TIMINGS', width / 2, height / 2 + 12);
+    ctx.fillText('WED, 25 NOV 2026 • 7:00 PM ONWARDS', width / 2, height / 2 + 12);
   }, []);
 
   useEffect(() => {
@@ -88,7 +88,7 @@ export default function GoldScratchCard() {
 
       const percent = Math.round((transparentCount / totalPixels) * 100);
 
-      if (percent >= 38 && !isScratched) {
+      if (percent >= 35 && !isScratched) {
         setIsScratched(true);
         if (soundController) {
           soundController.playTasselBell();
@@ -115,7 +115,7 @@ export default function GoldScratchCard() {
 
     ctx.globalCompositeOperation = 'destination-out';
     ctx.beginPath();
-    ctx.arc(x, y, 26, 0, Math.PI * 2);
+    ctx.arc(x, y, 28, 0, Math.PI * 2);
     ctx.fill();
 
     if (soundController && Math.random() > 0.7) {
@@ -126,42 +126,42 @@ export default function GoldScratchCard() {
   };
 
   return (
-    <div className="relative w-full max-w-[350px] sm:max-w-[430px] h-[205px] sm:h-[220px] rounded-2xl overflow-hidden shadow-[0_15px_35px_rgba(74,12,25,0.3)] border-2 border-[#C5932A] select-none mx-auto bg-[#4A0C19]">
-      <div className="absolute inset-0 p-4 sm:p-5 flex flex-col justify-between bg-damask-maroon text-[#FFF8E7]">
-        <div className="flex items-center justify-between border-b border-[#E5C158]/35 pb-2">
+    <div className="relative w-full max-w-[340px] sm:max-w-[400px] h-[175px] sm:h-[185px] rounded-2xl overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.65)] border-2 border-[#C5932A] select-none mx-auto bg-[#4A0C19]">
+      <div className="absolute inset-0 p-3.5 sm:p-4 flex flex-col justify-between bg-damask-maroon text-[#FFF8E7]">
+        <div className="flex items-center justify-between border-b border-[#E5C158]/35 pb-1.5">
           <div className="flex items-center gap-1.5 text-[#FFF3B8]">
-            <Sparkles className="w-4 h-4 text-[#E5C158]" />
-            <span className="font-cinzel text-[11px] font-bold tracking-widest uppercase">
-              SILVER JUBILEE VENUE PASS
+            <Sparkles className="w-3.5 h-3.5 text-[#E5C158]" />
+            <span className="font-cinzel text-[10px] font-bold tracking-widest uppercase">
+              SILVER JUBILEE PASS (2001 – 2026)
             </span>
           </div>
-          <span className="text-[10px] font-sans px-2.5 py-0.5 rounded-full bg-[#E5C158]/20 text-[#FFF3B8] border border-[#E5C158]/50 font-bold">
-            25 NOVEMBER
+          <span className="text-[9px] font-sans px-2 py-0.5 rounded-full bg-[#E5C158]/20 text-[#FFF3B8] border border-[#E5C158]/50 font-bold">
+            25 NOV 2026
           </span>
         </div>
 
-        <div className="space-y-2 my-auto text-left">
-          <div className="flex items-center gap-2 text-xs sm:text-sm">
-            <Clock className="w-4 h-4 text-[#E5C158] flex-shrink-0" />
+        <div className="space-y-1.5 my-auto text-left">
+          <div className="flex items-center gap-2 text-xs">
+            <Clock className="w-3.5 h-3.5 text-[#E5C158] flex-shrink-0" />
             <span className="font-serif font-bold text-[#FFF3B8]">
-              25 November (Married 25 Nov 2003) • {EVENT_DETAILS.celebrationTimeDisplay}
+              {EVENT_DETAILS.celebrationDateDisplay} • {EVENT_DETAILS.celebrationTimeDisplay}
             </span>
           </div>
 
-          <div className="flex items-start gap-2 text-xs sm:text-sm">
-            <MapPin className="w-4 h-4 text-[#E5C158] flex-shrink-0 mt-0.5" />
+          <div className="flex items-start gap-2 text-xs">
+            <MapPin className="w-3.5 h-3.5 text-[#E5C158] flex-shrink-0 mt-0.5" />
             <div>
-              <p className="font-serif font-bold text-base text-[#FFF4C2] leading-tight">
+              <p className="font-serif font-bold text-sm text-[#FFF4C2] leading-tight">
                 {EVENT_DETAILS.venue.name}
               </p>
-              <p className="text-[11px] text-[#F5E19C]/90 font-sans leading-snug mt-0.5">
+              <p className="text-[10px] text-[#F5E19C]/90 font-sans leading-snug">
                 {EVENT_DETAILS.venue.addressLine1}, {EVENT_DETAILS.venue.area}, {EVENT_DETAILS.venue.city}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="flex items-center justify-between pt-2 border-t border-[#E5C158]/25 text-[10px] font-sans text-[#FFF3B8]">
+        <div className="flex items-center justify-between pt-1.5 border-t border-[#E5C158]/25 text-[10px] font-sans text-[#FFF3B8]">
           <span className="flex items-center gap-1 font-semibold">
             <PhoneCall className="w-3 h-3 text-[#E5C158]" /> RSVP: {EVENT_DETAILS.rsvp.phoneDisplay}
           </span>

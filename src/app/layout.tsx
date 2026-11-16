@@ -39,7 +39,7 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: 'Navneet & Ruby Goel | 25th Wedding Anniversary (Silver Jubilee)',
   description:
-    'Celebrating 25 Years of Love & Togetherness (25 November 2001 - 25 November 2026). Join the Goel Family at Golden Dreams Banquets, Kalkaji, New Delhi for the Silver Jubilee Gala.',
+    'Celebrating 25 Years of Love & Togetherness (25 November 2003 - 25 November 2028). Join the Goel Family at Golden Dreams Banquets, Kalkaji, New Delhi for the Silver Jubilee Gala.',
   keywords: [
     'Navneet Goel',
     'Ruby Goel',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Navneet & Ruby Goel • 25th Silver Jubilee Invitation',
     description:
-      'Celebrating 25 Years of Eternal Love & Togetherness. Wednesday, 25 November 2026 at Golden Dreams Banquets, Kalkaji, New Delhi.',
+      'Celebrating 25 Years of Eternal Love & Togetherness. Saturday, 25 November 2028 at Golden Dreams Banquets, Kalkaji, New Delhi.',
     type: 'website',
     images: [
       {

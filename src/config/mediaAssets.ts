@@ -30,14 +30,14 @@ export const EVENT_DETAILS = {
   couple: "Navneet Goel & Ruby Goel",
   groom: "Navneet Goel",
   bride: "Ruby Goel",
-  weddingDate: "2003-11-25",
-  weddingDateDisplay: "25 November 2003",
-  weddingYear: 2003,
-  celebrationDate: "2028-11-25",
-  celebrationYear: 2028,
-  celebrationDateDisplay: "Saturday, 25 November 2028",
-  celebrationTimeDisplay: "7:30 PM Onwards (IST)",
-  celebrationDateTimeIso: "2028-11-25T19:30:00+05:30",
+  weddingDate: "2001-11-25",
+  weddingDateDisplay: "25 November 2001",
+  weddingYear: 2001,
+  celebrationDate: "2026-11-25",
+  celebrationYear: 2026,
+  celebrationDateDisplay: "Wednesday, 25 November 2026",
+  celebrationTimeDisplay: "7:00 PM Onwards (IST)",
+  celebrationDateTimeIso: "2026-11-25T19:00:00+05:30",
   timezone: "Asia/Kolkata",
   utcOffset: "+05:30",
   sacredChant: "॥ ॐ श्री गणेशाय नमः ॥",
@@ -87,7 +87,7 @@ export const EVENT_DETAILS = {
     venuePhoneDisplay: "088268 48864",
     email: "navvnnitgoel@gmail.com",
     whatsappText:
-      "Namaste! We are delighted to confirm our presence for the 25th Silver Jubilee celebration of Navneet Goel & Ruby Goel on 25 November at Golden Dreams Banquets, Kalkaji, New Delhi.",
+      "Namaste! We are delighted to confirm our presence for the 25th Silver Jubilee celebration of Navneet Goel & Ruby Goel on Wednesday, 25 November 2026 at 7:00 PM at Golden Dreams Banquets, Kalkaji, New Delhi.",
   },
 };
 
@@ -99,28 +99,28 @@ export const AUDIO_CONFIG = {
 
 export const ITINERARY_EVENTS = [
   {
-    time: "7:30 PM",
+    time: "7:00 PM",
     title: "The Royal Welcome & Tilak",
     description:
       "Warm family welcome at Golden Dreams Banquets with classical notes, rose petal showers, and signature mocktails.",
     icon: "Flower2",
   },
   {
-    time: "8:15 PM",
+    time: "7:45 PM",
     title: "The Silver Varmala & Ring Exchange",
     description:
       "Exchange of silver-threaded mogra & rose garlands and commemoration of 25 years of sacred vows.",
     icon: "HeartHandshake",
   },
   {
-    time: "9:00 PM",
+    time: "8:30 PM",
     title: "Silver Jubilee Cake Cutting & Family Blessings",
     description:
       "Grand Silver Jubilee cake celebration, heartfelt toasts by children and family, and joyful dance performances.",
     icon: "Sparkles",
   },
   {
-    time: "9:45 PM",
+    time: "9:15 PM",
     title: "Musical Sangeet & Pure-Veg Royal Feast",
     description:
       "Soulful melodies, family games, and an opulent 100% pure-vegetarian royal culinary feast.",
@@ -128,15 +128,12 @@ export const ITINERARY_EVENTS = [
   },
 ];
 
-/**
- * Curated Clothesline Track (4 best couple photos interleaved with 3 royal parchment story notes)
- */
 export const CLOTHESLINE_MEMORIES: MemoryPhoto[] = [
   {
-    id: "mem-2003-varmala",
+    id: "mem-2001-varmala",
     title: "The Sacred Varmala",
-    year: "2003",
-    dateStr: "25 November 2003",
+    year: "2001",
+    dateStr: "25 November 2001",
     caption:
       "Where two souls met under a canopy of blessings, exchanging garlands and a promise of seven lifetimes.",
     src: "/fam/SAVE_20211122_010512.jpg",
@@ -145,40 +142,16 @@ export const CLOTHESLINE_MEMORIES: MemoryPhoto[] = [
     hashtag: "#howitstarted",
   },
   {
-    id: "note-1",
-    title: "A Promise Written in the Stars",
-    year: "2003",
-    dateStr: "Chapter I",
-    caption: "",
-    src: "",
-    isNoteCard: true,
-    noteQuote:
-      "Some stories begin with grand gestures. Ours started on 25 November 2003 with a simple smile, sacred vows, and an unspoken promise to walk every mile hand in hand.",
-    noteSub: "25 • 11 • 2003",
-  },
-  {
-    id: "mem-2003-throne",
+    id: "mem-2001-throne",
     title: "The Royal Wedding Throne",
-    year: "2003",
-    dateStr: "25 November 2003",
+    year: "2001",
+    dateStr: "25 November 2001",
     caption:
       "Seated side by side as bride and groom — the foundation of twenty-five years of unwavering companionship.",
     src: "/flow/asset-b-start-frame-2001.jpg",
     aspectRatio: "landscape",
-    tag: "2003 Reception",
+    tag: "2001 Reception",
     hashtag: "#sacredbeginnings",
-  },
-  {
-    id: "note-2",
-    title: "Growing Together",
-    year: "2015",
-    dateStr: "Chapter II",
-    caption: "",
-    src: "",
-    isNoteCard: true,
-    noteQuote:
-      "Friendship grew into something deeper, and we realized life's richest treasures were the quiet morning teas, family laughter, and dreams we built together.",
-    noteSub: "A Home Filled With Grace",
   },
   {
     id: "mem-2019-sentosa",
@@ -193,22 +166,10 @@ export const CLOTHESLINE_MEMORIES: MemoryPhoto[] = [
     hashtag: "#adventures",
   },
   {
-    id: "note-3",
-    title: "Twenty-Five Glorious Years",
-    year: "25th",
-    dateStr: "Chapter III",
-    caption: "",
-    src: "",
-    isNoteCard: true,
-    noteQuote:
-      "Quarter of a century later, the silver shine of our journey reflects every blessing, every shared triumph, and a love that only grows brighter with time.",
-    noteSub: "25 Years of Togetherness",
-  },
-  {
-    id: "mem-silver-jubilee",
+    id: "mem-2026-silver",
     title: "The Silver Jubilee Portrait",
-    year: "25th",
-    dateStr: "25 November",
+    year: "2026",
+    dateStr: "25 November 2026",
     caption:
       "Twenty-five years of grace, strength, and timeless togetherness — Navneet & Ruby Goel.",
     src: "/fam/DSC4214.jpg",
@@ -218,29 +179,26 @@ export const CLOTHESLINE_MEMORIES: MemoryPhoto[] = [
   },
 ];
 
-/**
- * Curated Host Vault Items (Focused strictly on the 4 best couple portraits)
- */
 export const HOST_VAULT_ITEMS: MemoryPhoto[] = [
   {
     id: "vault-1",
-    title: "The Sacred Varmala Ceremony (25 Nov 2003)",
-    year: "2003",
-    dateStr: "25 Nov 2003",
+    title: "The Sacred Varmala Ceremony (25 Nov 2001)",
+    year: "2001",
+    dateStr: "25 Nov 2001",
     caption: "Navneet & Ruby Goel on their wedding night, adorned in traditional bridal finery and floral garlands.",
     src: "/fam/SAVE_20211122_010512.jpg",
     aspectRatio: "landscape",
-    tag: "2003 Wedding",
+    tag: "2001 Wedding",
   },
   {
     id: "vault-2",
-    title: "Wedding Reception Throne (25 Nov 2003)",
-    year: "2003",
-    dateStr: "25 Nov 2003",
+    title: "Wedding Reception Throne (25 Nov 2001)",
+    year: "2001",
+    dateStr: "25 Nov 2001",
     caption: "The beginning of a 25-year journey seated on the carved silver wedding thrones.",
     src: "/flow/asset-b-start-frame-2001.jpg",
     aspectRatio: "landscape",
-    tag: "Archive 2003",
+    tag: "Archive 2001",
   },
   {
     id: "vault-3",
@@ -254,9 +212,9 @@ export const HOST_VAULT_ITEMS: MemoryPhoto[] = [
   },
   {
     id: "vault-4",
-    title: "The Silver Jubilee Couple Portrait",
-    year: "25th",
-    dateStr: "25 November",
+    title: "The Silver Jubilee Couple Portrait (2026)",
+    year: "2026",
+    dateStr: "25 Nov 2026",
     caption: "Navneet & Ruby Goel celebrating 25 glorious years of love and family.",
     src: "/fam/DSC4214.jpg",
     aspectRatio: "portrait",
@@ -266,33 +224,35 @@ export const HOST_VAULT_ITEMS: MemoryPhoto[] = [
 
 export const DEMO_GUEST_WISHES: GuestWishItem[] = [];
 
-/**
- * Drop-in 10-Second AI Video Clip Slots for Shri Ram Janmabhoomi Mandir, Ayodhya (UP, India).
- * When you generate the 10-second clips using the prompts in `AI_VIDEO_PROMPTS_AYODHYA_RAM_MANDIR.md`
- * and place them into `public/videos/ayodhya/`, the website automatically plays them in sequence
- * (with responsive 16:9 desktop and 9:16 mobile variants).
- * Until those files are dropped in, the website renders the 60fps Animated Ayodhya Ram Mandir
- * Scrollytelling Panorama (never showing broken or unrelated stock videos).
- */
 export const AYODHYA_VIDEO_CLIPS = {
+  prologueMorningSun: {
+    src: '/videos/ayodhya/ram-mandir-morning-sun.mp4',
+    startTime: 0.1,
+    endTime: 13.9,
+  },
   clip1HeroExterior: {
-    desktop: '/videos/ayodhya/clip1-ram-mandir-hero-16x9.mp4',
-    mobile: '/videos/ayodhya/clip1-ram-mandir-hero-9x16.mp4',
+    src: '/videos/ayodhya/clip1-4.mp4',
+    startTime: 0.1,
+    endTime: 9.85,
   },
   clip2MandapamCorridor: {
-    desktop: '/videos/ayodhya/clip2-ram-mandir-corridor-16x9.mp4',
-    mobile: '/videos/ayodhya/clip2-ram-mandir-corridor-9x16.mp4',
+    src: '/videos/ayodhya/clip1-4.mp4',
+    startTime: 10.15,
+    endTime: 19.85,
   },
   clip3PeacockBridge: {
-    desktop: '/videos/ayodhya/clip3-ram-mandir-peacock-bridge-16x9.mp4',
-    mobile: '/videos/ayodhya/clip3-ram-mandir-peacock-bridge-9x16.mp4',
+    src: '/videos/ayodhya/clip1-4.mp4',
+    startTime: 20.15,
+    endTime: 29.85,
   },
   clip4RoyalMandapSofa: {
-    desktop: '/videos/ayodhya/clip4-ram-mandir-royal-mandap-16x9.mp4',
-    mobile: '/videos/ayodhya/clip4-ram-mandir-royal-mandap-9x16.mp4',
+    src: '/videos/ayodhya/clip1-4.mp4',
+    startTime: 30.15,
+    endTime: 39.9,
   },
   clip5LotusPondFinale: {
-    desktop: '/videos/ayodhya/clip5-ram-mandir-lotus-pond-16x9.mp4',
-    mobile: '/videos/ayodhya/clip5-ram-mandir-lotus-pond-9x16.mp4',
+    src: '/videos/ayodhya/clip5.mp4',
+    startTime: 0.1,
+    endTime: 9.9,
   },
 };
