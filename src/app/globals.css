@@ -29,7 +29,6 @@ body {
   background-color: #160307;
   color: #f8f1e5;
   font-family: var(--font-montserrat);
-  overflow-x: clip;
   scroll-behavior: smooth;
 }
 

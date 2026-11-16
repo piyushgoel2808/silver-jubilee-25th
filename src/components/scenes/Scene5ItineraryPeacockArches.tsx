@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { EVENT_DETAILS, ITINERARY_EVENTS } from '@/config/mediaAssets';
@@ -322,9 +323,39 @@ export default function Scene5ItineraryPeacockArches() {
         </div>
       </div>
 
-      <div className="w-full max-w-5xl flex items-center justify-between mt-10 px-4 pointer-events-none">
-        <RoyalCaparisonedElephant className="w-28 sm:w-40 h-auto" mirrored={false} />
-        <RoyalCaparisonedElephant className="w-28 sm:w-40 h-auto" mirrored={true} />
+      {/* 4. REALISTIC ROYAL PROCESSIONAL PATHWAY WITH CAPARISONED ELEPHANTS & PEACOCKS */}
+      <div className="relative w-full max-w-5xl mt-12 rounded-3xl overflow-hidden border-2 border-[#D4AF37] shadow-[0_25px_60px_rgba(0,0,0,0.88)] z-10 bg-[#24030A]">
+        <div className="relative w-full h-48 sm:h-64 overflow-hidden">
+          <Image
+            src="/images/royal-path.jpg"
+            alt="Royal Palace Sandstone Processional Pathway"
+            fill
+            className="object-cover object-bottom filter brightness-95"
+            sizes="(max-width: 1200px) 100vw, 1200px"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#24030A] via-transparent to-[#24030A]/70 pointer-events-none" />
+
+          {/* Border Zari Inset */}
+          <div className="absolute inset-2 sm:inset-3 rounded-2xl border border-[#D4AF37]/40 pointer-events-none z-10" />
+
+          <div className="absolute inset-x-0 bottom-0 flex items-end justify-between px-3 sm:px-8 pb-3 z-20">
+            <div className="flex items-end gap-1.5 sm:gap-3">
+              <RoyalCaparisonedElephant className="w-24 sm:w-36 md:w-44 h-auto" mirrored={false} />
+              <RoyalPeacock className="hidden sm:block w-16 h-20 mb-2" mirrored={false} />
+            </div>
+
+            <div className="text-center pb-2 px-2">
+              <span className="font-cinzel text-[9px] sm:text-xs font-bold text-[#FFF3B8] uppercase tracking-widest bg-[#3D0714]/90 px-4 py-1.5 rounded-full border border-[#E5C158]/80 shadow-md backdrop-blur-sm">
+                ✦ Royal Silver Jubilee Procession • 25 Nov 2028 ✦
+              </span>
+            </div>
+
+            <div className="flex items-end gap-1.5 sm:gap-3">
+              <RoyalPeacock className="hidden sm:block w-16 h-20 mb-2" mirrored={true} />
+              <RoyalCaparisonedElephant className="w-24 sm:w-36 md:w-44 h-auto" mirrored={true} />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

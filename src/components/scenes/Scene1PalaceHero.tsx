@@ -22,15 +22,15 @@ import { ChevronDown, MapPin, Sparkles } from 'lucide-react';
  * Modeled directly on the `tabmandir` (`rammandir.framer.website`) + `rameswaram` reference videos:
  *
  * Key Fixes:
- * 1. Uses native `sticky top-0 h-[100dvh] w-full overflow-hidden` inside a `relative h-[320dvh]`
- *    scroll track so it NEVER gets stuck in `position: fixed` or bleeds over downstream chapters.
- * 2. Eliminates unrelated Pexels/Mahalakshmi/tourist videos and wires up the 3 dedicated 10-second
- *    Ayodhya Ram Mandir AI video clip slots (`clip1HeroExterior`, `clip2MandapamCorridor`,
- *    `clip3PeacockBridge`) backed by our 60fps animated Ayodhya Ram Mandir panoramas.
- * 3. Smooth scroll-linked camera zoom + walking elephants + fanning peacocks across all 3 stages.
+ * 1. Uses GSAP ScrollTrigger `pin: stageRef.current` + native `sticky top-0 h-[100dvh]` fallback
+ *    so it NEVER gets stuck, NEVER produces a black split screen, and NEVER bleeds over downstream chapters in Safari.
+ * 2. Dedicated 10-second Ayodhya Ram Mandir AI video clip slots (`clip1HeroExterior`,
+ *    `clip2MandapamCorridor`, `clip3PeacockBridge`) backed by 60fps animated Ayodhya Ram Mandir panoramas.
+ * 3. Photorealistic caparisoned white elephants walking on a real sandstone processional pathway.
  */
 export default function Scene1PalaceHero() {
   const containerRef = useRef<HTMLElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
   const stageBgRef = useRef<HTMLDivElement>(null);
   const leftWalkRef = useRef<HTMLDivElement>(null);
   const rightWalkRef = useRef<HTMLDivElement>(null);
@@ -38,13 +38,15 @@ export default function Scene1PalaceHero() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    if (!containerRef.current) return;
+    if (!containerRef.current || !stageRef.current) return;
 
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
         trigger: containerRef.current,
+        pin: stageRef.current,
         start: 'top top',
         end: 'bottom bottom',
+        pinSpacing: false,
         scrub: 0.5,
         onUpdate: (self) => {
           const p = self.progress;
@@ -59,13 +61,13 @@ export default function Scene1PalaceHero() {
           // Subtle continuous 3D camera dolly zoom on the active temple vista
           if (stageBgRef.current) {
             const localProgress = (p * 3) % 1;
-            const scaleVal = 1 + localProgress * 0.14;
+            const scaleVal = 1 + localProgress * 0.12;
             stageBgRef.current.style.transform = `scale(${scaleVal.toFixed(3)})`;
           }
 
           // Scroll-linked horizontal walk for the foreground elephants & peacocks
           if (leftWalkRef.current && rightWalkRef.current) {
-            const offset = Math.sin(p * Math.PI) * 42;
+            const offset = Math.sin(p * Math.PI) * 45;
             leftWalkRef.current.style.transform = `translateX(${offset.toFixed(1)}px)`;
             rightWalkRef.current.style.transform = `translateX(${(-offset).toFixed(1)}px)`;
           }
@@ -82,8 +84,11 @@ export default function Scene1PalaceHero() {
       ref={containerRef}
       className="relative h-[320dvh] w-full z-10 select-none bg-[#2B050D]"
     >
-      {/* Sticky Full-Screen Viewport Stage (`100vw x 100dvh`) — Never Bleeds Outside `#scene-1` */}
-      <div className="sticky top-0 left-0 h-[100dvh] w-full overflow-hidden flex items-center justify-center bg-[#2B050D]">
+      {/* Sticky Full-Screen Viewport Stage (`100vw x 100dvh`) with GSAP Pinning */}
+      <div
+        ref={stageRef}
+        className="sticky top-0 left-0 h-[100dvh] w-full overflow-hidden flex items-center justify-center bg-[#2B050D]"
+      >
         {/* =========================================================================
             BACKGROUND MULTI-CLIP AYODHYA RAM MANDIR LAYERS (100vw x 100dvh)
            ========================================================================= */}
@@ -102,7 +107,7 @@ export default function Scene1PalaceHero() {
               mobileSrc={AYODHYA_VIDEO_CLIPS.clip1HeroExterior.mobile}
               fallback={<GrandTemplePanorama className="w-full h-full" />}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#24030A]/90 via-transparent to-[#24030A]/45 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#24030A]/92 via-transparent to-[#24030A]/50 pointer-events-none" />
           </div>
 
           {/* CLIP 2 (34% - 68%): Ayodhya Koliya / Mandapam Carved Pillared Corridor */}
@@ -116,7 +121,7 @@ export default function Scene1PalaceHero() {
               mobileSrc={AYODHYA_VIDEO_CLIPS.clip2MandapamCorridor.mobile}
               fallback={<RameswaramPillaredCorridor className="w-full h-full" />}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#24030A]/90 via-[#24030A]/25 to-[#24030A]/55 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#24030A]/92 via-[#24030A]/30 to-[#24030A]/60 pointer-events-none" />
           </div>
 
           {/* CLIP 3 (68% - 100%): Twin Sandstone Chhatris & Peacock Bridge (`tabmandir` frames 8-9) */}
@@ -130,7 +135,7 @@ export default function Scene1PalaceHero() {
               mobileSrc={AYODHYA_VIDEO_CLIPS.clip3PeacockBridge.mobile}
               fallback={<AyodhyaPeacockBridgePanorama className="w-full h-full" />}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#24030A]/92 via-[#24030A]/20 to-[#24030A]/50 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#24030A]/92 via-[#24030A]/25 to-[#24030A]/55 pointer-events-none" />
           </div>
         </div>
 
@@ -159,7 +164,7 @@ export default function Scene1PalaceHero() {
           </div>
 
           {/* Center Scalloped Royal Cream-and-Gold Temple Arch Plaque (`tabmandir` frame 7) */}
-          <div className="relative z-20 my-auto flex flex-col items-center text-center max-w-2xl mx-4 px-6 sm:px-12 py-7 sm:py-9 rounded-t-[140px] rounded-b-3xl bg-[#FFFDF9]/92 text-[#4A0C19] border-4 border-[#D4AF37] backdrop-blur-md shadow-[0_25px_65px_rgba(0,0,0,0.85)]">
+          <div className="relative z-20 my-auto flex flex-col items-center text-center max-w-2xl mx-4 px-6 sm:px-12 py-7 sm:py-9 rounded-t-[140px] rounded-b-3xl bg-[#FFFDF9]/95 text-[#4A0C19] border-4 border-[#D4AF37] backdrop-blur-md shadow-[0_25px_65px_rgba(0,0,0,0.85)]">
             <div className="absolute inset-2 rounded-t-[130px] rounded-b-2xl border border-[#C5932A]/60 pointer-events-none" />
 
             <SacredGaneshaEmblem className="w-12 h-12 sm:w-14 sm:h-14 -mt-2 mb-1" />
@@ -192,10 +197,10 @@ export default function Scene1PalaceHero() {
           </div>
 
           <div className="relative z-20 w-full max-w-5xl mx-auto flex items-center justify-between px-4 sm:px-6 pb-24 sm:pb-14 text-[10px] sm:text-xs font-cinzel font-bold tracking-[0.16em] text-[#FFF3B8] uppercase">
-            <span className="bg-[#2B050D]/85 px-3 py-1 rounded-full border border-[#E5C158]/60 backdrop-blur-sm">
+            <span className="bg-[#2B050D]/90 px-3.5 py-1.5 rounded-full border border-[#E5C158]/70 backdrop-blur-sm shadow-md">
               01 • SHRI RAM MANDIR, AYODHYA
             </span>
-            <span className="bg-[#2B050D]/85 px-3 py-1 rounded-full border border-[#E5C158]/60 backdrop-blur-sm flex items-center gap-1 animate-bounce text-[#FFF3B8]">
+            <span className="bg-[#2B050D]/90 px-3.5 py-1.5 rounded-full border border-[#E5C158]/70 backdrop-blur-sm flex items-center gap-1.5 animate-bounce text-[#FFF3B8] shadow-md">
               SCROLL TO ENTER MANDAPAM <ChevronDown className="w-3.5 h-3.5" />
             </span>
           </div>
@@ -218,7 +223,7 @@ export default function Scene1PalaceHero() {
             </span>
           </div>
 
-          <div className="relative z-20 my-auto flex flex-col items-center text-center max-w-2xl mx-4 px-6 sm:px-10 py-8 sm:py-10 rounded-3xl bg-[#2B050D]/90 border-2 border-[#E5C158]/90 backdrop-blur-xl shadow-[0_25px_60px_rgba(0,0,0,0.92)]">
+          <div className="relative z-20 my-auto flex flex-col items-center text-center max-w-2xl mx-4 px-6 sm:px-10 py-8 sm:py-10 rounded-3xl bg-[#2B050D]/92 border-2 border-[#E5C158]/90 backdrop-blur-xl shadow-[0_25px_60px_rgba(0,0,0,0.92)]">
             <p className="font-sans text-[10px] sm:text-xs tracking-[0.28em] text-[#E5C158] uppercase font-bold">
               SINCE 25 NOVEMBER 2003 • IN THE SACRED QUIET
             </p>
@@ -234,10 +239,10 @@ export default function Scene1PalaceHero() {
           </div>
 
           <div className="relative z-20 w-full max-w-5xl mx-auto flex items-center justify-between px-4 sm:px-6 pb-24 sm:pb-14 text-[10px] sm:text-xs font-cinzel font-bold tracking-[0.16em] text-[#FFF3B8] uppercase">
-            <span className="bg-[#2B050D]/85 px-3 py-1 rounded-full border border-[#E5C158]/60 backdrop-blur-sm">
+            <span className="bg-[#2B050D]/90 px-3.5 py-1.5 rounded-full border border-[#E5C158]/70 backdrop-blur-sm shadow-md">
               02 • THE SACRED MANDAPAM
             </span>
-            <span className="bg-[#2B050D]/85 px-3 py-1 rounded-full border border-[#E5C158]/60 backdrop-blur-sm flex items-center gap-1 animate-bounce text-[#FFF3B8]">
+            <span className="bg-[#2B050D]/90 px-3.5 py-1.5 rounded-full border border-[#E5C158]/70 backdrop-blur-sm flex items-center gap-1.5 animate-bounce text-[#FFF3B8] shadow-md">
               SCROLL TO PEACOCK BRIDGE <ChevronDown className="w-3.5 h-3.5" />
             </span>
           </div>
@@ -255,7 +260,7 @@ export default function Scene1PalaceHero() {
           }`}
         >
           <div className="relative z-20 pt-14 sm:pt-18 text-center px-4">
-            <p className="font-cinzel text-xs font-bold tracking-[0.25em] text-[#FFF3B8] uppercase bg-[#3D0714]/90 px-4 py-1.5 rounded-full border border-[#E5C158]/75">
+            <p className="font-cinzel text-xs font-bold tracking-[0.25em] text-[#FFF3B8] uppercase bg-[#3D0714]/90 px-4 py-1.5 rounded-full border border-[#E5C158]/75 shadow-md">
               03 • THE PEACOCK BRIDGE &amp; ROYAL JHAROKHA
             </p>
           </div>
@@ -281,7 +286,7 @@ export default function Scene1PalaceHero() {
               </div>
             </div>
 
-            <div className="px-6 py-3 rounded-2xl bg-[#2B050D]/88 border border-[#E5C158]/70 backdrop-blur-md shadow-xl">
+            <div className="px-6 py-3 rounded-2xl bg-[#2B050D]/90 border border-[#E5C158]/75 backdrop-blur-md shadow-xl">
               <h3 className="font-serif text-2xl sm:text-4xl font-bold text-white gold-text-foil">
                 Every ordinary day. With you.
               </h3>
@@ -301,15 +306,15 @@ export default function Scene1PalaceHero() {
             </div>
           </div>
 
-          {/* Walking Elephants & Fanning Peacocks Along the Sandstone Bridge Balustrade */}
-          <div className="relative z-20 w-full max-w-6xl mx-auto flex items-end justify-between px-3 sm:px-10 pb-24 sm:pb-14">
+          {/* Walking Elephants & Peacocks Along the Sandstone Processional Balustrade */}
+          <div className="relative z-20 w-full max-w-6xl mx-auto flex items-end justify-between px-3 sm:px-10 pb-20 sm:pb-12">
             <div ref={leftWalkRef} className="flex items-end gap-1 sm:gap-3 transition-transform duration-150">
               <RoyalCaparisonedElephant className="w-24 sm:w-36 md:w-44 h-auto" mirrored={false} />
               <RoyalPeacock className="w-16 sm:w-24 h-auto mb-2" mirrored={false} />
             </div>
 
             <div className="text-center pb-2">
-              <span className="text-[9px] sm:text-xs font-cinzel font-bold text-[#FFF3B8] uppercase tracking-widest bg-[#2B050D]/85 px-3 py-1 rounded-full border border-[#E5C158]/60">
+              <span className="text-[9px] sm:text-xs font-cinzel font-bold text-[#FFF3B8] uppercase tracking-widest bg-[#2B050D]/90 px-3.5 py-1.5 rounded-full border border-[#E5C158]/70 shadow-md">
                 SCROLL FOR ROYAL FARMAAN ↓
               </span>
             </div>

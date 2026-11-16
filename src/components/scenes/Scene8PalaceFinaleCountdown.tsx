@@ -5,6 +5,7 @@ import { EVENT_DETAILS, AYODHYA_VIDEO_CLIPS } from '@/config/mediaAssets';
 import {
   AyodhyaRamMandirClipPlayer,
   LotusPondFinalePanorama,
+  RoyalCaparisonedElephant,
 } from '@/components/illustrations/RoyalHeritageArt';
 import { Share2, Check } from 'lucide-react';
 
@@ -185,6 +186,10 @@ export default function Scene8PalaceFinaleCountdown() {
           mobileSrc={AYODHYA_VIDEO_CLIPS.clip5LotusPondFinale.mobile}
           fallback={<LotusPondFinalePanorama />}
         />
+        <div className="absolute inset-x-0 bottom-16 flex items-end justify-between px-4 sm:px-12 pointer-events-none z-20">
+          <RoyalCaparisonedElephant className="w-24 sm:w-36 md:w-44 h-auto" mirrored={false} />
+          <RoyalCaparisonedElephant className="w-24 sm:w-36 md:w-44 h-auto" mirrored={true} />
+        </div>
       </div>
     </section>
   );

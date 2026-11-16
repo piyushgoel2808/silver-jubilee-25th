@@ -14,8 +14,16 @@
 # production
 /build
 
-# misc
+# local reference media
+clips/
+Refrence vid/
+*.mp4.bak
+public/videos/ayodhya/clip1-4.mp4
+public/videos/ayodhya/clip5.mp4
+public/videos/ayodhya/ram-mandir-morning-sun.mp4
 .DS_Store
+**/.DS_Store
+
 *.pem
 .claude/
 .claude-flow/

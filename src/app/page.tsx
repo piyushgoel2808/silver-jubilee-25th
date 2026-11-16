@@ -115,7 +115,7 @@ export default function Home() {
   };
 
   return (
-    <main className="relative min-h-screen w-full bg-[#160307] text-slate-100 overflow-x-clip">
+    <main className="relative min-h-screen w-full bg-[#160307] text-slate-100">
       {/* 0. Prologue: Full-Screen Temple Vista + 3D Wax-Seal Royal Envelope */}
       <PrologueEnvelope onOpen={() => setIsInvitationOpened(true)} />
 
