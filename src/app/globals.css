@@ -1,0 +1,361 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-cinzel: 'Cinzel Decorative', Georgia, serif;
+  --font-greatvibes: 'Great Vibes', cursive;
+  --font-montserrat: 'Montserrat', system-ui, sans-serif;
+  --gold-metallic: #d4af37;
+  --gold-shimmer: #f3e5ab;
+  --burgundy-deep: #4a0c19;
+  --parchment-warm: #f9f3e5;
+  --midnight-deep: #071022;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: #160307;
+  color: #f8f1e5;
+  font-family: var(--font-montserrat);
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+
+/* Luxury Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1a0409;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #f3e5ab 0%, #d4af37 50%, #8d6214 100%);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #fff3c4;
+}
+
+::selection {
+  background: #d4af37;
+  color: #23040c;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Royal Damask & Heritage Parchment Patterns */
+.bg-damask-maroon {
+  background-color: #4a0c19;
+  background-image:
+    radial-gradient(circle at 50% 25%, rgba(148, 24, 48, 0.45) 0%, rgba(40, 5, 12, 0.9) 100%),
+    radial-gradient(#d4af37 0.9px, transparent 0.9px),
+    radial-gradient(#e5c158 0.75px, #4a0c19 0.75px);
+  background-size: 100% 100%, 36px 36px, 36px 36px;
+  background-position: 0 0, 0 0, 18px 18px;
+}
+
+.bg-heritage-parchment {
+  background-color: #f9f3e5;
+  background-image:
+    radial-gradient(circle at 50% 45%, rgba(255, 253, 248, 0.85) 0%, rgba(235, 219, 188, 0.75) 100%),
+    radial-gradient(rgba(197, 147, 42, 0.22) 1px, transparent 1px),
+    radial-gradient(rgba(138, 21, 43, 0.1) 1px, transparent 1px);
+  background-size: 100% 100%, 32px 32px, 32px 32px;
+  background-position: 0 0, 0 0, 16px 16px;
+}
+
+.bg-damask-teal {
+  background-color: #092420;
+  background-image:
+    radial-gradient(circle at 50% 20%, rgba(21, 82, 76, 0.45) 0%, rgba(4, 22, 20, 0.92) 100%),
+    radial-gradient(#e5c07b 0.85px, transparent 0.85px),
+    radial-gradient(#d4af37 0.75px, #092420 0.75px);
+  background-size: 100% 100%, 34px 34px, 34px 34px;
+  background-position: 0 0, 0 0, 17px 17px;
+}
+
+.bg-damask-cream {
+  background-color: #f7f1e3;
+  background-image:
+    linear-gradient(180deg, rgba(244, 235, 217, 0.92) 0%, rgba(251, 247, 238, 0.98) 50%, rgba(242, 231, 209, 0.92) 100%),
+    radial-gradient(rgba(197, 147, 42, 0.25) 0.9px, transparent 0.9px),
+    radial-gradient(rgba(154, 27, 31, 0.14) 0.9px, #f7f1e3 0.9px);
+  background-size: 100% 100%, 36px 36px, 36px 36px;
+  background-position: 0 0, 0 0, 18px 18px;
+}
+
+.zari-patti-vertical {
+  background: repeating-linear-gradient(
+    180deg,
+    #fff4b8 0px,
+    #d4af37 4px,
+    #5c0b1f 4px,
+    #5c0b1f 10px,
+    #e5c158 10px,
+    #8d6214 14px
+  );
+}
+
+.zari-patti-horizontal {
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(197, 147, 42, 0.45) 0px,
+    rgba(197, 147, 42, 0.45) 6px,
+    transparent 6px,
+    transparent 14px
+  );
+}
+
+/* ============================================================================
+   CONTINUOUS LIVING MOTION KEYFRAMES (Elephants, Birds, Temple Flag, Bells, Lotuses)
+   ============================================================================ */
+
+@keyframes waxSheen {
+  0% {
+    transform: translateX(-140%) rotate(25deg);
+  }
+  45%, 100% {
+    transform: translateX(160%) rotate(25deg);
+  }
+}
+
+.wax-seal-sheen::after {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: -30%;
+  width: 55%;
+  height: 160%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 244, 184, 0.65) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: waxSheen 3.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Articulated Royal Elephant Animations */
+@keyframes elephantWalkBob {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-4px) rotate(-0.6deg); }
+  50% { transform: translateY(0px) rotate(0deg); }
+  75% { transform: translateY(-4px) rotate(0.6deg); }
+}
+
+@keyframes elephantTrunkSwing {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(12deg); }
+}
+
+@keyframes elephantEarFlap {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.86); }
+}
+
+@keyframes elephantLegStrideA {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(7deg); }
+}
+
+@keyframes elephantLegStrideB {
+  0%, 100% { transform: rotate(7deg); }
+  50% { transform: rotate(-6deg); }
+}
+
+.animate-elephant-body {
+  animation: elephantWalkBob 3.2s ease-in-out infinite;
+}
+
+.animate-elephant-trunk {
+  transform-box: fill-box;
+  transform-origin: 15% 20%;
+  animation: elephantTrunkSwing 3.4s ease-in-out infinite;
+}
+
+.animate-elephant-ear {
+  transform-box: fill-box;
+  transform-origin: right center;
+  animation: elephantEarFlap 2.6s ease-in-out infinite;
+}
+
+.animate-elephant-leg-a {
+  transform-box: fill-box;
+  transform-origin: top center;
+  animation: elephantLegStrideA 2.2s ease-in-out infinite;
+}
+
+.animate-elephant-leg-b {
+  transform-box: fill-box;
+  transform-origin: top center;
+  animation: elephantLegStrideB 2.2s ease-in-out infinite;
+}
+
+/* Temple Saffron/Gold Flag (Dhwaja) Wave */
+@keyframes dhwajaWave {
+  0%, 100% { transform: skewY(-4deg) scaleX(1); }
+  50% { transform: skewY(6deg) scaleX(0.92); }
+}
+
+.animate-dhwaja {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: dhwajaWave 1.8s ease-in-out infinite;
+}
+
+/* Peacock Plume Fanning & Neck Grace */
+@keyframes peacockPlumeFan {
+  0%, 100% { transform: rotate(-2.5deg) scale(0.98); }
+  50% { transform: rotate(3deg) scale(1.04); }
+}
+
+.animate-peacock-plume {
+  transform-box: fill-box;
+  transform-origin: top right;
+  animation: peacockPlumeFan 3.8s ease-in-out infinite;
+}
+
+/* Temple Birds Gliding Across Horizon */
+@keyframes birdFlightAcross {
+  0% { transform: translateX(-10%) translateY(10px) scale(0.85); opacity: 0; }
+  15% { opacity: 0.9; }
+  85% { opacity: 0.9; }
+  100% { transform: translateX(110%) translateY(-28px) scale(1.05); opacity: 0; }
+}
+
+.animate-bird-glide {
+  animation: birdFlightAcross 18s linear infinite;
+}
+
+/* Lotus Bobbing on Pond & Water Ripples */
+@keyframes lotusBob {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50% { transform: translateY(-5px) rotate(1.5deg); }
+}
+
+.animate-lotus-bob {
+  animation: lotusBob 4s ease-in-out infinite;
+}
+
+/* Clothesline & Bell Sway Keyframes */
+@keyframes sway1 {
+  0%, 100% { transform: rotate(-2.2deg); }
+  50% { transform: rotate(2.4deg); }
+}
+
+@keyframes sway2 {
+  0%, 100% { transform: rotate(2.5deg); }
+  50% { transform: rotate(-2.1deg); }
+}
+
+.animate-sway-1 {
+  transform-origin: top center;
+  animation: sway1 4.2s ease-in-out infinite;
+}
+
+.animate-sway-2 {
+  transform-origin: top center;
+  animation: sway2 5.4s ease-in-out infinite;
+}
+
+/* Drifting Golden Petals */
+@keyframes petalDrift {
+  0% {
+    transform: translateY(-10vh) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(105vh) translateX(60px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-petal-fall {
+  animation: petalDrift 11s linear infinite;
+}
+
+/* Metallic Gold Text Foil Effect */
+.gold-text-foil {
+  background: linear-gradient(135deg, #fff3c4 0%, #d4af37 40%, #aa771c 70%, #fff0b3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
+}
+
+.silver-text-foil {
+  background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #94a3b8 70%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 10px rgba(226, 232, 240, 0.25);
+}
+
+/* Glassmorphism Styles */
+.royal-glass {
+  background: rgba(24, 6, 12, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+.royal-glass-maroon {
+  background: rgba(61, 7, 20, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.42);
+}
+
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+.perspective-envelope {
+  perspective: 1400px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+@media (max-width: 350px) {
+  h1, .responsive-title {
+    font-size: 1.45rem !important;
+    line-height: 1.15 !important;
+  }
+  .font-cinzel {
+    letter-spacing: 0.1em !important;
+  }
+}
+
+@media (min-aspect-ratio: 4/5) and (max-width: 960px) {
+  .fold-stage-center {
+    max-width: 540px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
