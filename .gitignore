@@ -19,6 +19,7 @@
 *.pem
 .claude/
 .claude-flow/
+src/app/api/git-helper/
 
 # debug
 npm-debug.log*
